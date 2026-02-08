@@ -1,0 +1,7 @@
+# Standardize line endings to LF for all text files
+# This prevents the CRLF warning on Windows and ensures compatibility with Linux GitHub Actions
+* text=auto eol=lf
+*.m3u text eol=lf
+*.html text eol=lf
+*.js text eol=lf
+*.yml text eol=lf
