@@ -1,0 +1,5 @@
+#EXTM3U
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=ed76c18710d621a87c89dedc7c13019f:7241c82fe48525a9dc6be6d7bb86611f
+#EXTINF:-1,Prime Eng
+https://a201aivottlinear-a.akamaihd.net/OTTB/lhr-nitro/clients/dash/enc/fclywfntvr/out/v1/e21d21ec21e34c7192049a44ee3de428/cenc.mpd

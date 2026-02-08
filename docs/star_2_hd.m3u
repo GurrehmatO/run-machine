@@ -1,0 +1,6 @@
+#EXTM3U
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=9457eb90129456fa8ea95e10ba4ac51e:e620a970cea474c491ac78ae71a4d764
+#KODIPROP:inputstream.adaptive.stream_headers=Cookie=__hdnea__=st=1764676042~exp=1764762442~acl=/*~hmac=a27df8023b2f2c1e632ff9217b064e60f0997d1e07983dcd0c05f2a6ae0efed2|User-Agent=plaYtv/7.1.5 (Linux;Android 13) ExoPlayerLib/2.11.6|Referer=https://www.jiotv.com/
+#EXTINF:-1,Star 2 HD
+https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Sports_HD2_BTS/output/index.mpd?__hdnea__=st=1764676042~exp=1764762442~acl=/*~hmac=a27df8023b2f2c1e632ff9217b064e60f0997d1e07983dcd0c05f2a6ae0efed2

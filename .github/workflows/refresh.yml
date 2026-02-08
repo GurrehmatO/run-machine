@@ -1,0 +1,36 @@
+name: Refresh M3U Playlists
+
+on:
+  schedule:
+    # Runs at 10:55, 14:55, and 18:55 IST (UTC+5:30)
+    # UTC equivalents: 05:25, 09:25, 13:25
+    - cron: '25 5,9,13 * * *'
+  workflow_dispatch: # Allows manual triggering
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run Parser
+        run: node parse.js
+        env:
+          SOURCE_URL: ${{ secrets.SOURCE_URL }} # Stored in GitHub Repo Secrets
+
+      - name: Commit and Push Changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add docs/*.m3u
+          git commit -m "chore: refresh m3u files [skip ci]" || echo "No changes to commit"
+          git push
