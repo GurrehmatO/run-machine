@@ -3,14 +3,26 @@ const cheerio = require('cheerio');
 const fs = require('fs');
 const path = require('path');
 
-// Configuration: Add your source URLs here
-const SOURCES = [
-    { name: 'Prime Eng', url: 'https://cricketstan.github.io/Allrounder-/prame' },
-    { name: 'Star 2 Hindi', url: 'https://allrounderlive.pages.dev/channel/star-sports-2-hindi' },
-    { name: 'Star 2 HD', url: 'https://cricketstan.github.io/Channel-14/'},
-    { name: 'Willow', url: 'https://allrounderlive.pages.dev/willow'}
+// Configuration: Loads from environment variable (GitHub) or local file (PC)
+let SOURCES = [];
+try {
+    if (process.env.SOURCES_JSON) {
+        SOURCES = JSON.parse(process.env.SOURCES_JSON);
+    } else {
+        const sourcesPath = path.join(__dirname, 'sources.json');
+        if (fs.existsSync(sourcesPath)) {
+            SOURCES = JSON.parse(fs.readFileSync(sourcesPath, 'utf8'));
+        }
+    }
+} catch (err) {
+    console.error('Error loading sources:', err.message);
+    process.exit(1);
+}
 
-];
+if (SOURCES.length === 0) {
+    console.error('No sources found. Please provide SOURCES_JSON env var or sources.json file.');
+    process.exit(1);
+}
 
 const OUTPUT_DIR = path.join(__dirname, 'docs');
 
