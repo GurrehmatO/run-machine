@@ -1,8 +1,8 @@
 #EXTM3U
 #KODIPROP:inputstream.adaptive.license_type=clearkey
-#KODIPROP:inputstream.adaptive.license_key=ed76c18710d621a87c89dedc7c13019f:7241c82fe48525a9dc6be6d7bb86611f
+#KODIPROP:inputstream.adaptive.license_key=d0df0607d2c9f7f175a1b68b2dd74af9:3b9bceeb5dd81d6e906217d27f831cee
 #EXTINF:-1,Prime Eng
-https://a201aivottlinear-a.akamaihd.net/OTTB/lhr-nitro/clients/dash/enc/fclywfntvr/out/v1/e21d21ec21e34c7192049a44ee3de428/cenc.mpd
+https://abdu3snaaaaaaaamditmqhyhioqyv.ta.bia-cf.live.pv-cdn.net/syd-nitro/live/clients/dash/enc/pdemmgihga/out/v1/bedaa948e7a24dc0b5fd5d7b38534d8c/cenc.mpd?amznDtid=AOAGZA014O5RE&encoding=segmentBase
 #KODIPROP:inputstream.adaptive.license_type=clearkey
 #KODIPROP:inputstream.adaptive.license_key=bd1ea6a1c1fb5dcdb709434e0826bbc0:f57f22cba32739ce7beb1fab3f3d060b
 #KODIPROP:inputstream.adaptive.stream_headers=Cookie=__hdnea__=st=1759751405~exp=1759837805~acl=/*~hmac=be0a77ab3649dfd1c57f6c0801fad8aa319a16d2063f18fdb21ebe43c043f7bf|User-Agent=plaYtv/7.1.5 (Linux;Android 13) ExoPlayerLib/2.11.6|Referer=https://www.jiotv.com/
