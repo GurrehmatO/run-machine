@@ -3,31 +3,44 @@ const cheerio = require('cheerio');
 const fs = require('fs');
 const path = require('path');
 
-// Configuration: Loads from environment variable (GitHub) or local file (PC)
-let SOURCES = [];
-try {
-    if (process.env.SOURCES_JSON) {
-        SOURCES = JSON.parse(process.env.SOURCES_JSON);
-    } else {
-        const sourcesPath = path.join(__dirname, 'sources.json');
-        if (fs.existsSync(sourcesPath)) {
-            SOURCES = JSON.parse(fs.readFileSync(sourcesPath, 'utf8'));
-        }
-    }
-} catch (err) {
-    console.error('Error loading sources:', err.message);
+const SOURCE_URL = process.env.SOURCE_URL;
+
+if (!SOURCE_URL) {
+    console.error('SOURCE_URL environment variable is not defined.');
     process.exit(1);
 }
 
-if (SOURCES.length === 0) {
-    console.error('No sources found. Please provide SOURCES_JSON env var or sources.json file.');
-    process.exit(1);
+async function getSources() {
+    try {
+        console.log(`Fetching sources from: ${SOURCE_URL}`);
+        const response = await axios.get(SOURCE_URL);
+        const data = response.data;
+        
+        if (!data || !data.iframes || !Array.isArray(data.iframes)) {
+            throw new Error('Invalid JSON structure from external source');
+        }
+
+        return data.iframes.map(item => ({
+            name: item.name,
+            url: item.iframeSrc
+        }));
+    } catch (err) {
+        console.error('Error fetching external sources:', err.message);
+        return [];
+    }
 }
 
 const OUTPUT_DIR = path.join(__dirname, 'docs');
 
 async function fetchAndParse() {
     try {
+        const SOURCES = await getSources();
+
+        if (SOURCES.length === 0) {
+            console.error('No sources found to process.');
+            process.exit(1);
+        }
+
         const results = [];
 
         for (const source of SOURCES) {
